@@ -9,6 +9,7 @@ using Common.Example;
 using Common.Impl;
 using MassTransit;
 using Ninject;
+using IMessage = Common.IMessage;
 
 namespace ServiceTest
 {
@@ -43,11 +44,17 @@ namespace ServiceTest
 
                     //ep.Consumer();
                     
-                    ep.LoadFrom(kernel);
-                    ep.Handler<EventExample>(context =>
-                    {
-                        return Console.Out.WriteLineAsync(context.Message.Name);
-                    });
+                    //ep.LoadFrom(kernel);
+                    ep.ConfigureConsumersForNinject(new[] {typeof (CommandExampleHandler).Assembly}, kernel);
+                    //ep.Consumer(() => new FaultConsumerTest());
+                    //ep.Handler<EventExample>(context =>
+                    //{
+                    //    return Console.Out.WriteLineAsync(context.Message.Name);
+                    //});
+                    //ep.Handler<Fault<IMessage>>(context =>
+                    //{
+                    //    return Console.Out.WriteLineAsync(context.Message.Message.ToString());
+                    //});
                     //ep.Consumer(typeof(CommandExample), type => new CommandExampleConsumer(new MessageHandlerFactory(new MessageHandlerDiscoveryService(new MessageAssemblyConfig()))));
 
                     //ep.Handler<CommandExample>(context =>

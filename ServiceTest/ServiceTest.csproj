@@ -81,15 +81,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandExampleHandler.cs" />
+    <Compile Include="ConfigForNinject.cs" />
+    <Compile Include="EventConsumer.cs" />
+    <Compile Include="FaultConsumerTest.cs" />
     <Compile Include="ICommandExampleConsumer.cs" />
     <Compile Include="MessageAssemblyConfig.cs" />
     <Compile Include="MessageHandlerFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestGenericFaultConsumer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

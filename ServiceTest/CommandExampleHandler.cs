@@ -20,6 +20,8 @@ namespace ServiceTest
 
         public void Execute(CommandExample command)
         {
+            throw new NotImplementedException();
+
             Console.WriteLine("Message from command" + command.Text);
 
             _messageService.Raise(new EventExample
